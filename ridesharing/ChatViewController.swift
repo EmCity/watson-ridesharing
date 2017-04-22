@@ -39,6 +39,7 @@ class ChatViewController: JSQMessagesViewController {
         self.senderDisplayName = "Sebastian"
         //FIRApp.configure()
         self.collectionView.backgroundColor = UIColor(red: 230/255, green: 230/255, blue: 230/255, alpha: 0.1)
+        navigationItem.hidesBackButton = true
         FIRAuth.auth()?.signInAnonymously(completion: { (user, error) in // 2
             if let err = error { // 3
                 print(err.localizedDescription)
