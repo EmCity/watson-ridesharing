@@ -259,10 +259,10 @@ class ViewController: JSQMessagesViewController {
         // check if the message is to start the chat
         print("Result in callback is: " + result)
 
-        if(result == "START_CHAT") {
-            self.performSegue(withIdentifier: "showGroupChat", sender: self)
-        } else {
-            DispatchQueue.main.async { //to let it run in the thread with priority
+        DispatchQueue.main.async { //to let it run in the thread with priority
+            if(result == "START_CHAT") {
+                self.performSegue(withIdentifier: "showGroupChat", sender: self)
+            } else {
                 self.showTypingIndicator = 	false
                 self.addMessage(withId: "321", name: "Watson", text: result)
                 JSQSystemSoundPlayer.jsq_playMessageReceivedSound()
