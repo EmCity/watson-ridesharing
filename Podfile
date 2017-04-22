@@ -8,7 +8,7 @@ target 'ridesharing' do
   use_frameworks!
   pod "SwiftSpinner", '~> 1.1.0'
   pod "JSQMessagesViewController", '~> 7.3.4'
-
+  pod 'SwiftyJSON'
   # Pods for ridesharing
 
   target 'ridesharingTests' do

@@ -43,21 +43,21 @@ class ViewController: JSQMessagesViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        SwiftSpinner.show("Connecting to Watson", animated: true)
+        //SwiftSpinner.show("Connecting to Server", animated: true)
         // Create a configuration path for the WatsonCredentials.plist file to read in Watson credentials
-        let configurationPath = Bundle.main.path(forResource: "WatsonCredentials", ofType: "plist")
-        let configuration = NSDictionary(contentsOfFile: configurationPath!)
+        //let configurationPath = Bundle.main.path(forResource: "WatsonCredentials", ofType: "plist")
+        //let configuration = NSDictionary(contentsOfFile: configurationPath!)
         // Set the Watson credentials for Conversation service from the WatsonCredentials.plist
-        let conversationPassword = configuration?["ConversationPassword"] as! String
-        let conversationUsername = configuration?["ConversationUsername"] as! String
-        let conversationWorkspaceID = configuration?["ConversationWorkspaceID"] as! String
-        self.workspaceID = conversationWorkspaceID
+        //let conversationPassword = configuration?["ConversationPassword"] as! String
+        //let conversationUsername = configuration?["ConversationUsername"] as! String
+        //let conversationWorkspaceID = configuration?["ConversationWorkspaceID"] as! String
+        //self.workspaceID = conversationWorkspaceID
         // Create date format for Conversation service version
-        let version = "2016-12-15"
+        //let version = "2016-12-15"
         // Initialize conversation object
-        conversation = Conversation(username: conversationUsername, password: conversationPassword, version: version)
+        //conversation = Conversation(username: conversationUsername, password: conversationPassword, version: version)
         // Initial conversation message from Watson
-        conversation.message(withWorkspace: self.workspaceID, failure: failConversationWithError){
+        /*conversation.message(withWorkspace: self.workspaceID, failure: failConversationWithError){
             response in
             for watsonMessage in response.output.text{
                 // Create message object with Watson response
@@ -71,7 +71,8 @@ class ViewController: JSQMessagesViewController {
                     SwiftSpinner.hide()
                 }
             }
-        }
+        } */
+        //SwiftSpinner.hide()
     }
     
     func didBecomeActive(_ notification: Notification) {
@@ -112,13 +113,26 @@ class ViewController: JSQMessagesViewController {
     // Setup text bubbles for conversation
     func setupTextBubbles() {
         // Create sender Id and display name for user
-        self.senderId = "TestUser"
-        self.senderDisplayName = "TestUser"
+        self.senderId = "Myself"
+        self.senderDisplayName = "Myself"
         // Set avatars for user and Watson
-        collectionView?.collectionViewLayout.incomingAvatarViewSize = CGSize(width: 28, height:32 )
-        collectionView?.collectionViewLayout.outgoingAvatarViewSize = CGSize(width: 37, height:37 )
+        //collectionView?.collectionViewLayout.incomingAvatarViewSize = CGSize(width: 28, height:32 )
+        //collectionView?.collectionViewLayout.outgoingAvatarViewSize = CGSize(width: 37, height:37 )
         automaticallyScrollsToMostRecentMessage = true
+            addWelcomeMessage() //show the first message
         
+    }
+    
+    func addWelcomeMessage()
+    
+    {
+        //create introductory message
+        let sender = "321"
+        let chatbotName = "Watson"
+        let messageContent = "Hi there! I'm Watson. I'm happy to help you with finding rides or offering ones yourself. Please tell me which one of the two it is."
+        let message = JSQMessage(senderId: sender, displayName: chatbotName, text: messageContent)
+        self.conversationMessages.append(message!)
+        self.reloadMessagesView()
     }
     // Set how many items are in the collection view
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -147,7 +161,7 @@ class ViewController: JSQMessagesViewController {
         else{
             avatar  = JSQMessagesAvatarImageFactory.avatarImage(with: UIImage(named:"watson_avatar"), diameter: 32)
         }
-        return avatar
+        return nil
     }
     
     // Create and display timestamp for every third message in the collection view
@@ -194,7 +208,7 @@ class ViewController: JSQMessagesViewController {
         
         // Get response from Watson based on user text
         let messageRequest = MessageRequest(text: text, context: self.context)
-        conversation.message(withWorkspace: self.workspaceID, request: messageRequest, failure: failConversationWithError) { response in
+        /*conversation.message(withWorkspace: self.workspaceID, request: messageRequest, failure: failConversationWithError) { response in
             // Set current context
             self.context = response.context
             // Handle Watson response
@@ -209,6 +223,6 @@ class ViewController: JSQMessagesViewController {
                     }
                 }
             }
-        }
+        } */
     }
 }
