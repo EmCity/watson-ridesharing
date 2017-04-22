@@ -265,6 +265,7 @@
 				TargetAttributes = {
 					555C91A71D0F0731003E84E3 = {
 						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = N4BMT4Y9KL;
 						LastSwiftMigration = 0800;
 					};
 					555C91BB1D0F0731003E84E3 = {
@@ -617,6 +618,7 @@
 			baseConfigurationReference = 11E82E2A01DF386A2BD70BE6 /* Pods-ridesharing.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = N4BMT4Y9KL;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
@@ -636,6 +638,7 @@
 			baseConfigurationReference = 1CCAB15229E227CD9B62C913 /* Pods-ridesharing.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = N4BMT4Y9KL;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
