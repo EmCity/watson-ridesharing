@@ -35,7 +35,7 @@ class ChatViewController: JSQMessagesViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.senderId = "1"
+        self.senderId = String(arc4random_uniform(1000000) + 1)
         self.senderDisplayName = "Sebastian"
         //FIRApp.configure()
         self.collectionView.backgroundColor = UIColor(red: 230/255, green: 230/255, blue: 230/255, alpha: 0.1)
@@ -46,7 +46,7 @@ class ChatViewController: JSQMessagesViewController {
             }
             })
         //self.senderId = FIRAuth.auth()?.currentUser?.uid
-        print("What is the sender Id returned from the server?")
+        print("What is the sender Id?")
         print(senderId)
         // No avatars
         collectionView!.collectionViewLayout.incomingAvatarViewSize = CGSize.zero
@@ -63,12 +63,12 @@ class ChatViewController: JSQMessagesViewController {
         //self.senderId = "1"
         //SwiftSpinner.show("Connecting to Server", animated: true)
         // messages from someone else
-        addMessage(withId: "foo", name: "Mr.Bolt", text: "I am so fast!")
+        //addMessage(withId: "foo", name: "Mr.Bolt", text: "I am so fast!")
         // messages sent from local sender
-        addMessage(withId: "123", name: "Me", text: "I bet I can run faster than you!")
-        addMessage(withId: "231", name: "Me", text: "I like to run!")
+        //addMessage(withId: "123", name: "Me", text: "I bet I can run faster than you!")
+        //addMessage(withId: "231", name: "Me", text: "I like to run!")
         // animates the receiving of a new message on the view
-        finishReceivingMessage()
+        finishReceivingMessage(animated: true)
         //SwiftSpinner.hide()
         //observeTyping()
     }
@@ -110,7 +110,7 @@ override func collectionView(_ collectionView: UICollectionView, numberOfItemsIn
 
 private func setupOutgoingBubble() -> JSQMessagesBubbleImage {
     let bubbleImageFactory = JSQMessagesBubbleImageFactory()
-    return bubbleImageFactory!.outgoingMessagesBubbleImage(with: UIColor.jsq_messageBubbleBlue())
+    return bubbleImageFactory!.outgoingMessagesBubbleImage(with: UIColor(colorLiteralRed: 200.0/230.0, green: 20.0/230.0, blue: 20.0/230.0, alpha: 0.6))
 }
 
 private func setupIncomingBubble() -> JSQMessagesBubbleImage {
@@ -158,7 +158,7 @@ private func setupIncomingBubble() -> JSQMessagesBubbleImage {
                 self.addMessage(withId: id, name: name, text: text)
                 
                 // 5
-                self.finishReceivingMessage()
+                self.finishReceivingMessage(animated: true)
             } else {
                 print("Error! Could not decode message data")
             }

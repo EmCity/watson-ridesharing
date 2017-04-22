@@ -24,14 +24,14 @@
                     </view>
                     <navigationItem key="navigationItem" title="RideGo" id="oDK-Js-1Kx"/>
                     <connections>
-                        <segue destination="k1k-Cz-oUj" kind="show" identifier="showGroupChat" id="ndO-Ul-7hG"/>
+                        <segue destination="k1k-Cz-oUj" kind="showDetail" identifier="showGroupChat" action="showViewController:sender:" id="ndO-Ul-7hG"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1108" y="263.11844077961024"/>
         </scene>
-        <!--Chat View Controller-->
+        <!--Your conversation-->
         <scene sceneID="xGG-g1-BcO">
             <objects>
                 <viewController id="k1k-Cz-oUj" customClass="ChatViewController" customModule="ridesharing" customModuleProvider="target" sceneMemberID="viewController">
@@ -44,6 +44,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <navigationItem key="navigationItem" title="Your conversation" id="0wJ-k4-bDd"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="L3X-RK-UUQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
