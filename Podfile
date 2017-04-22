@@ -10,7 +10,7 @@ target 'ridesharing' do
   pod "JSQMessagesViewController", '~> 7.3.4'
   pod 'SwiftyJSON'
   # Pods for ridesharing
-
+  pod "Starscream"
   target 'ridesharingTests' do
     inherit! :search_paths
     # Pods for testing
