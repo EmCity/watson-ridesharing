@@ -217,12 +217,13 @@ class ViewController: JSQMessagesViewController {
         // Add message to conversation messages array of JSQMessages
         self.conversationMessages.append(message!)
         DispatchQueue.main.async {
+            self.showTypingIndicator = 	true
             self.finishSendingMessage()
         }
         
         // Get response from Watson based on user text
         //let messageRequest = MessageRequest(text: text, context: self.context)
-        self.showTypingIndicator = 	true
+        
         fetchResponse(queryText: text)
         JSQSystemSoundPlayer.jsq_playMessageSentSound()
         /*conversation.message(withWorkspace: self.workspaceID, request: messageRequest, failure: failConversationWithError) { response in
