@@ -5,7 +5,7 @@
 
 import UIKit
 import SwiftSpinner
-import ConversationV1
+//import ConversationV1
 import JSQMessagesViewController
 import BMSCore
 
@@ -22,8 +22,8 @@ class ViewController: JSQMessagesViewController {
     let session = 1; //Create a random number that is going to be used as a user ID
     // Configure Watson Conversation items
     var conversationMessages = [JSQMessage]()
-    var conversation : Conversation!
-    var context: Context?
+//    var conversation : Conversation!
+//    var context: Context?
     var workspaceID: String!
     
     override func viewDidLoad() {
