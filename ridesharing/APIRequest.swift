@@ -42,7 +42,7 @@ class APIRequest
                 print("result here !")
                 r = NSString(data: data!, encoding: String.Encoding.utf8.rawValue) as! String
                 print(r)
-                if let result = json[0]["responds"][0].string {
+                if let result = json["responds"][0].string {
                     //Now you got your value
                     print("The response from Watson was retrieved and is: ")
                     print(result)
