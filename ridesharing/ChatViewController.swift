@@ -81,10 +81,10 @@ class ChatViewController: JSQMessagesViewController {
         let message = messages[(indexPath as NSIndexPath).item]
         var avatar: JSQMessagesAvatarImage
         if (message.senderId == self.senderId){
-            avatar  = JSQMessagesAvatarImageFactory.avatarImage(with: UIImage(named:"lisa-avatar"), diameter: 37)
+            avatar  = JSQMessagesAvatarImageFactory.avatarImage(with: UIImage(named:"latinoavatar"), diameter: 37)
         }
         else{
-            avatar  = JSQMessagesAvatarImageFactory.avatarImage(with: UIImage(named:"watson-blue-avatar"), diameter: 32)
+            avatar  = JSQMessagesAvatarImageFactory.avatarImage(with: UIImage(named:"asianavatar"), diameter: 32)
         }
         return avatar
     }
