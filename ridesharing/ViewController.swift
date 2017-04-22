@@ -15,7 +15,7 @@ import BMSCore
 class ViewController: JSQMessagesViewController {
     
     // Configure chat settings for JSQMessages
-    let incomingChatBubble = JSQMessagesBubbleImageFactory().incomingMessagesBubbleImage(with: UIColor.jsq_messageBubbleBlue())
+    let incomingChatBubble = JSQMessagesBubbleImageFactory().incomingMessagesBubbleImage(with: UIColor(colorLiteralRed: 200.0/230.0, green: 20.0/230.0, blue: 20.0/230.0, alpha: 0.6))
     let outgoingChatBubble = JSQMessagesBubbleImageFactory().outgoingMessagesBubbleImage(with: UIColor.jsq_messageBubbleLightGray())
     fileprivate let kCollectionViewCellHeight: CGFloat = 12.5
     var api = APIRequest()
@@ -33,9 +33,16 @@ class ViewController: JSQMessagesViewController {
         self.setupTextBubbles()
         // Remove attachment icon from toolbar
         self.inputToolbar.contentView.leftBarButtonItem = nil
-        
         //NotificationCenter.default.addObserver(self, selector: #selector(didBecomeActive), name: NSNotification.Name.UIApplicationDidBecomeActive, object: nil)
     }
+    /*
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        var nav = self.navigationController?.navigationBar
+        nav?.barStyle = UIBarStyle.Black
+        nav?.tintColor = UIColor.white
+        nav?.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.orange]
+    } */
     
     func reloadMessagesView() {
         DispatchQueue.main.async {
@@ -212,7 +219,9 @@ class ViewController: JSQMessagesViewController {
         }
         
         // Get response from Watson based on user text
-        let messageRequest = MessageRequest(text: text, context: self.context)
+        //let messageRequest = MessageRequest(text: text, context: self.context)
+        fetchResponse(queryText: text)
+        JSQSystemSoundPlayer.jsq_playMessageSentSound()
         /*conversation.message(withWorkspace: self.workspaceID, request: messageRequest, failure: failConversationWithError) { response in
             // Set current context
             self.context = response.context

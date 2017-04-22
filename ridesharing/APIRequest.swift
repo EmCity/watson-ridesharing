@@ -11,8 +11,8 @@ import SwiftyJSON
 
 class APIRequest
 {
-    let baseUrl = ""
-    let lang = "en"
+    let baseUrl: String = "http://46.101.236.70/chat"
+    let lang: String = "en"
     
     
     func sendRequest(session: Int, request: String, callback: @escaping (String) -> ())
@@ -26,6 +26,7 @@ class APIRequest
         urlRequest.httpMethod = "POST"
         let postString = "user_id="+String(session)+"&input="+escapedRequest!
         urlRequest.httpBody = postString.data(using: .utf8)
+        urlRequest.addValue("application/json", forHTTPHeaderField: "Content-Type")
         //urlRequest.setValue("Bearer "+clientKey, forHTTPHeaderField: "Authorization")//set HTTP auth header
         let session = URLSession.shared
         //perform data request
@@ -35,13 +36,23 @@ class APIRequest
             {
                 print("Data has been returned.")
                 let json = JSON(data: returnedData)
-                if let result = json["result"]["speech"].string {
+                var r = (returnedData.base64EncodedString())
+                print("result here !")
+                r = NSString(data: data!, encoding: String.Encoding.utf8.rawValue) as! String
+                print(r)
+                if let result = json[0]["responds"][0].string {
                     //Now you got your value
                     print("The response from Watson was retrieved and is: ")
                     print(result)
                     callback(result) //The result will be accessible via the variable resultResponse
                 }
+                if let errorMessage = json["message"].string
+                {
+                    print("Some server error occured.")
+                    callback("Sorry, we are experiencing some server errors at the moment.")
+                }
             }
+            
             
         }
         task.resume()

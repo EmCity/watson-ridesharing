@@ -21,7 +21,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         myBMSClient.initialize(bluemixRegion: BMSClient.Region.usSouth)
         myBMSClient.requestTimeout = 10.0 // seconds
 
-        
+        UINavigationBar.appearance().barTintColor = UIColor(red: 200.0/255.0, green: 10.0/255.0, blue: 10.0/255.0, alpha: 0.6)
+        UINavigationBar.appearance().tintColor = UIColor(red: 100.0/255.0, green: 10.0/255.0, blue: 150.0/255.0, alpha: 0.9)
+        UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName : UIColor.white]
 
         
 
