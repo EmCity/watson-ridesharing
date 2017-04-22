@@ -9,6 +9,9 @@ target 'ridesharing' do
   pod "SwiftSpinner", '~> 1.1.0'
   pod "JSQMessagesViewController", '~> 7.3.4'
   pod 'SwiftyJSON'
+  pod 'Firebase/Storage'
+  pod 'Firebase/Auth'
+  pod 'Firebase/Database'
   # Pods for ridesharing
 
   target 'ridesharingTests' do

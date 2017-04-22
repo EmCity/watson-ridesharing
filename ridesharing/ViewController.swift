@@ -170,12 +170,12 @@ class ViewController: JSQMessagesViewController {
         let message = conversationMessages[(indexPath as NSIndexPath).item]
         var avatar: JSQMessagesAvatarImage
         if (message.senderId == self.senderId){
-            avatar  = JSQMessagesAvatarImageFactory.avatarImage(with: UIImage(named:"avatar_small"), diameter: 37)
+            avatar  = JSQMessagesAvatarImageFactory.avatarImage(with: UIImage(named:"lisa-avatar"), diameter: 37)
         }
         else{
-            avatar  = JSQMessagesAvatarImageFactory.avatarImage(with: UIImage(named:"watson_avatar"), diameter: 32)
+            avatar  = JSQMessagesAvatarImageFactory.avatarImage(with: UIImage(named:"watson-blue-avatar"), diameter: 32)
         }
-        return nil
+        return avatar
     }
     
     // Create and display timestamp for every third message in the collection view
@@ -263,11 +263,19 @@ class ViewController: JSQMessagesViewController {
             self.addMessage(withId: "321", name: "Watson", text: result)
             JSQSystemSoundPlayer.jsq_playMessageReceivedSound()
             self.finishReceivingMessage(animated: true)
+            
+            //Test
+            self.performSegue(withIdentifier: "showGroupChat", sender: self)
         }
         
         
     }
     
+    override func shouldPerformSegue(withIdentifier: String, sender: Any?) -> Bool
+    {
+        print("Magic happens")
+        return true
+    }
     //send messages
     func addMessage(withId id: String, name: String, text: String) {
         let message = JSQMessage(senderId: id, displayName: name, text: text)

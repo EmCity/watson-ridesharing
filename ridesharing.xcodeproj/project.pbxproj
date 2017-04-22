@@ -18,6 +18,8 @@
 		555C91CC1D0F0731003E84E3 /* ridesharingUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 555C91CB1D0F0731003E84E3 /* ridesharingUITests.swift */; };
 		8215FA792CAB4F0688789599 /* BMSCredentials.plist in Resources */ = {isa = PBXBuildFile; fileRef = F7AB004A6BC64672B9C07487 /* BMSCredentials.plist */; };
 		9D056528766C3DA17608E6CD /* Pods_ridesharing.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C588E03443573F2DDF2BE953 /* Pods_ridesharing.framework */; };
+		C39A8D0F1EABEF98001E5F59 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C39A8D0E1EABEF98001E5F59 /* ChatViewController.swift */; };
+		C3B6524E1EAC045E008DC19C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C3B6524D1EAC045E008DC19C /* GoogleService-Info.plist */; };
 		C3C330481EAB587E000F3C5D /* APIRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C330471EAB587E000F3C5D /* APIRequest.swift */; };
 		C3C3304A1EAB688C000F3C5D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C3C330491EAB688C000F3C5D /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
@@ -72,6 +74,9 @@
 		555C91CD1D0F0731003E84E3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		87BF2132F67C2EAE62E4B71D /* Pods-ridesharingUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ridesharingUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ridesharingUITests/Pods-ridesharingUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		BE8DF661C07204DB0E9EEB5F /* Pods-ridesharingTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ridesharingTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ridesharingTests/Pods-ridesharingTests.release.xcconfig"; sourceTree = "<group>"; };
+		C39A8D0E1EABEF98001E5F59 /* ChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
+		C3B6524D1EAC045E008DC19C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		C3B6524F1EAC0E43008DC19C /* ridesharing.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ridesharing.entitlements; sourceTree = "<group>"; };
 		C3C330471EAB587E000F3C5D /* APIRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIRequest.swift; sourceTree = "<group>"; };
 		C3C330491EAB688C000F3C5D /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C588E03443573F2DDF2BE953 /* Pods_ridesharing.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ridesharing.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -143,6 +148,8 @@
 		555C91AA1D0F0731003E84E3 /* ridesharing */ = {
 			isa = PBXGroup;
 			children = (
+				C3B6524F1EAC0E43008DC19C /* ridesharing.entitlements */,
+				C3B6524D1EAC045E008DC19C /* GoogleService-Info.plist */,
 				F7AB004A6BC64672B9C07487 /* BMSCredentials.plist */,
 				555C91AB1D0F0731003E84E3 /* AppDelegate.swift */,
 				555C91B71D0F0731003E84E3 /* Info.plist */,
@@ -152,6 +159,7 @@
 				555C91B21D0F0731003E84E3 /* Assets.xcassets */,
 				4940B3EE1DC10B8000084419 /* WatsonCredentials.plist */,
 				C3C330471EAB587E000F3C5D /* APIRequest.swift */,
+				C39A8D0E1EABEF98001E5F59 /* ChatViewController.swift */,
 			);
 			path = ridesharing;
 			sourceTree = "<group>";
@@ -267,6 +275,11 @@
 						CreatedOnToolsVersion = 7.3.1;
 						DevelopmentTeam = N4BMT4Y9KL;
 						LastSwiftMigration = 0800;
+						SystemCapabilities = {
+							com.apple.Keychain = {
+								enabled = 1;
+							};
+						};
 					};
 					555C91BB1D0F0731003E84E3 = {
 						CreatedOnToolsVersion = 7.3.1;
@@ -310,6 +323,7 @@
 				555C91B11D0F0731003E84E3 /* Main.storyboard in Resources */,
 				C3C3304A1EAB688C000F3C5D /* LaunchScreen.storyboard in Resources */,
 				4940B3EF1DC10B8000084419 /* WatsonCredentials.plist in Resources */,
+				C3B6524E1EAC045E008DC19C /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -474,6 +488,7 @@
 			files = (
 				555C91AE1D0F0731003E84E3 /* ViewController.swift in Sources */,
 				C3C330481EAB587E000F3C5D /* APIRequest.swift in Sources */,
+				C39A8D0F1EABEF98001E5F59 /* ChatViewController.swift in Sources */,
 				555C91AC1D0F0731003E84E3 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -618,6 +633,7 @@
 			baseConfigurationReference = 11E82E2A01DF386A2BD70BE6 /* Pods-ridesharing.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = ridesharing/ridesharing.entitlements;
 				DEVELOPMENT_TEAM = N4BMT4Y9KL;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -638,6 +654,7 @@
 			baseConfigurationReference = 1CCAB15229E227CD9B62C913 /* Pods-ridesharing.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = ridesharing/ridesharing.entitlements;
 				DEVELOPMENT_TEAM = N4BMT4Y9KL;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",

@@ -5,7 +5,7 @@
 
 import UIKit
 import BMSCore
-
+import Firebase
 
 
 
@@ -28,7 +28,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
 
         
-
+        FIRApp.configure()
         return true
     }
     

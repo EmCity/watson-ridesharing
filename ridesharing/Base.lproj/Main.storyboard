@@ -9,7 +9,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Rideshare.io-->
+        <!--RideGo-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="ridesharing" customModuleProvider="target" sceneMemberID="viewController">
@@ -22,11 +22,32 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Rideshare.io" id="oDK-Js-1Kx"/>
+                    <navigationItem key="navigationItem" title="RideGo" id="oDK-Js-1Kx"/>
+                    <connections>
+                        <segue destination="k1k-Cz-oUj" kind="show" identifier="showGroupChat" id="ndO-Ul-7hG"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1108" y="263.11844077961024"/>
+        </scene>
+        <!--Chat View Controller-->
+        <scene sceneID="xGG-g1-BcO">
+            <objects>
+                <viewController id="k1k-Cz-oUj" customClass="ChatViewController" customModule="ridesharing" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="w3c-E3-hRr"/>
+                        <viewControllerLayoutGuide type="bottom" id="AQp-4u-ewu"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="FIP-wi-vbT">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="L3X-RK-UUQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2110" y="263"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="IQI-IE-ugP">
@@ -36,7 +57,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="vuI-Ea-Tma">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="barTintColor" red="0.1" green="0.1" blue="0.1" alpha="0.75" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="barTintColor" red="0.10000000000000001" green="0.10000000000000001" blue="0.10000000000000001" alpha="0.75" colorSpace="custom" customColorSpace="sRGB"/>
                         <textAttributes key="titleTextAttributes">
                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         </textAttributes>
