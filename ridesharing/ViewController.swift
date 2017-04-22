@@ -19,7 +19,9 @@ class ViewController: JSQMessagesViewController {
     let outgoingChatBubble = JSQMessagesBubbleImageFactory().outgoingMessagesBubbleImage(with: UIColor.jsq_messageBubbleLightGray())
     fileprivate let kCollectionViewCellHeight: CGFloat = 12.5
     var api = APIRequest()
-    let session = 1; //Create a random number that is going to be used as a user ID
+    //let session = 1; //Create a random number that is going to be used as a user ID
+    let session = Int(arc4random_uniform(1000000) + 1)
+    //print(String(session))
     // Configure Watson Conversation items
     var conversationMessages = [JSQMessage]()
 //    var conversation : Conversation!
@@ -220,6 +222,7 @@ class ViewController: JSQMessagesViewController {
         
         // Get response from Watson based on user text
         //let messageRequest = MessageRequest(text: text, context: self.context)
+        self.showTypingIndicator = 	true
         fetchResponse(queryText: text)
         JSQSystemSoundPlayer.jsq_playMessageSentSound()
         /*conversation.message(withWorkspace: self.workspaceID, request: messageRequest, failure: failConversationWithError) { response in

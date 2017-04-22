@@ -24,7 +24,7 @@ class APIRequest
         print(request);
         var urlRequest = URLRequest(url: url!) //make a request out of the URL
         urlRequest.httpMethod = "POST"
-        let requestDict = ["user_id": String(session), "input": escapedRequest!]
+        let requestDict = ["user_id": String(session), "input": request]
         do {
         let jsonData = try JSONSerialization.data(withJSONObject: requestDict, options: JSONSerialization.WritingOptions.prettyPrinted)
         urlRequest.httpBody = jsonData
