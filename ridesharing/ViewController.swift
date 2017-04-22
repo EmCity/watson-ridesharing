@@ -256,16 +256,18 @@ class ViewController: JSQMessagesViewController {
     
     func callback(result: String)
     {
-        
+        // check if the message is to start the chat
         print("Result in callback is: " + result)
-        DispatchQueue.main.async { //to let it run in the thread with priority
-            self.showTypingIndicator = 	false
-            self.addMessage(withId: "321", name: "Watson", text: result)
-            JSQSystemSoundPlayer.jsq_playMessageReceivedSound()
-            self.finishReceivingMessage(animated: true)
-            
-            //Test
+
+        if(result == "START_CHAT") {
             self.performSegue(withIdentifier: "showGroupChat", sender: self)
+        } else {
+            DispatchQueue.main.async { //to let it run in the thread with priority
+                self.showTypingIndicator = 	false
+                self.addMessage(withId: "321", name: "Watson", text: result)
+                JSQSystemSoundPlayer.jsq_playMessageReceivedSound()
+                self.finishReceivingMessage(animated: true)
+            }
         }
         
         
