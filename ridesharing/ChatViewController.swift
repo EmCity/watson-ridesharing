@@ -50,8 +50,8 @@ class ChatViewController: JSQMessagesViewController {
         print("What is the sender Id?")
         print(senderId)
         // No avatars
-        collectionView!.collectionViewLayout.incomingAvatarViewSize = CGSize.zero
-        collectionView!.collectionViewLayout.outgoingAvatarViewSize = CGSize.zero
+//        collectionView!.collectionViewLayout.incomingAvatarViewSize = CGSize.zero
+//        collectionView!.collectionViewLayout.outgoingAvatarViewSize = CGSize.zero
         observeMessages()
         //self.setupTextBubbles()
         // Remove attachment icon from toolbar
@@ -77,7 +77,20 @@ class ChatViewController: JSQMessagesViewController {
         print("prepare method for segue in ChatViewController")
     }
     
-override func collectionView(_ collectionView: JSQMessagesCollectionView!, messageBubbleImageDataForItemAt indexPath: IndexPath!) -> JSQMessageBubbleImageDataSource! {
+    override func collectionView(_ collectionView: JSQMessagesCollectionView, avatarImageDataForItemAt indexPath: IndexPath) -> JSQMessageAvatarImageDataSource? {
+        let message = messages[(indexPath as NSIndexPath).item]
+        var avatar: JSQMessagesAvatarImage
+        if (message.senderId == self.senderId){
+            avatar  = JSQMessagesAvatarImageFactory.avatarImage(with: UIImage(named:"lisa-avatar"), diameter: 37)
+        }
+        else{
+            avatar  = JSQMessagesAvatarImageFactory.avatarImage(with: UIImage(named:"watson-blue-avatar"), diameter: 32)
+        }
+        return avatar
+    }
+    
+    
+    override func collectionView(_ collectionView: JSQMessagesCollectionView!, messageBubbleImageDataForItemAt indexPath: IndexPath!) -> JSQMessageBubbleImageDataSource! {
     let message = messages[indexPath.item] // 1
     if message.senderId == senderId { // 2
         return outgoingBubbleImageView
@@ -85,10 +98,7 @@ override func collectionView(_ collectionView: JSQMessagesCollectionView!, messa
         return incomingBubbleImageView
     }
 }
-override func collectionView(_ collectionView: JSQMessagesCollectionView!, avatarImageDataForItemAt indexPath: IndexPath!) -> JSQMessageAvatarImageDataSource! {
-    return nil
-}
-    
+
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = super.collectionView(collectionView, cellForItemAt: indexPath) as! JSQMessagesCollectionViewCell
         let message = messages[indexPath.item]
