@@ -171,11 +171,12 @@ class ViewController: JSQMessagesViewController {
         var avatar: JSQMessagesAvatarImage
         if (message.senderId == self.senderId){
             avatar  = JSQMessagesAvatarImageFactory.avatarImage(with: UIImage(named:"avatar_small"), diameter: 37)
+            return avatar
         }
         else{
             avatar  = JSQMessagesAvatarImageFactory.avatarImage(with: UIImage(named:"watson_avatar"), diameter: 32)
+            return avatar
         }
-        return nil
     }
     
     // Create and display timestamp for every third message in the collection view
