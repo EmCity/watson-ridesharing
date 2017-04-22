@@ -18,7 +18,8 @@ class ViewController: JSQMessagesViewController {
     let incomingChatBubble = JSQMessagesBubbleImageFactory().incomingMessagesBubbleImage(with: UIColor.jsq_messageBubbleBlue())
     let outgoingChatBubble = JSQMessagesBubbleImageFactory().outgoingMessagesBubbleImage(with: UIColor.jsq_messageBubbleLightGray())
     fileprivate let kCollectionViewCellHeight: CGFloat = 12.5
-    
+    var api = APIRequest()
+    let session = 1; //Create a random number that is going to be used as a user ID
     // Configure Watson Conversation items
     var conversationMessages = [JSQMessage]()
     var conversation : Conversation!
@@ -28,11 +29,12 @@ class ViewController: JSQMessagesViewController {
     override func viewDidLoad() {
         
         super.viewDidLoad()
+        self.collectionView.backgroundColor = UIColor(red: 230/255, green: 230/255, blue: 230/255, alpha: 0.1)
         self.setupTextBubbles()
         // Remove attachment icon from toolbar
         self.inputToolbar.contentView.leftBarButtonItem = nil
         
-        NotificationCenter.default.addObserver(self, selector: #selector(didBecomeActive), name: NSNotification.Name.UIApplicationDidBecomeActive, object: nil)
+        //NotificationCenter.default.addObserver(self, selector: #selector(didBecomeActive), name: NSNotification.Name.UIApplicationDidBecomeActive, object: nil)
     }
     
     func reloadMessagesView() {
@@ -92,9 +94,9 @@ class ViewController: JSQMessagesViewController {
         print(error)
         SwiftSpinner.hide()
         // Present an alert to the user describing what the problem may be
-        DispatchQueue.main.async {
+        /*DispatchQueue.main.async {
             self.showAlert("Conversation Failed", alertMessage: "The Conversation service failed to reply. This could be due to invalid creditials, internet connection or other errors. Please verify your credentials in the WatsonCredentials.plist and rebuild the application. See the README for further assistance.")
-        }
+        } */
     }
     
     // Function to show an alert with an alertTitle String and alertMessage String
@@ -129,10 +131,13 @@ class ViewController: JSQMessagesViewController {
         //create introductory message
         let sender = "321"
         let chatbotName = "Watson"
-        let messageContent = "Hi there! I'm Watson. I'm happy to help you with finding rides or offering ones yourself. Please tell me which one of the two it is."
-        let message = JSQMessage(senderId: sender, displayName: chatbotName, text: messageContent)
-        self.conversationMessages.append(message!)
+        let firstMessageContent = "Hi there! I'm Watson. I'm happy to find people that will share a ride with you while you rent a car."
+        let secondMessageContent = "Please let me know where you want to go to."
+        let firstMessage = JSQMessage(senderId: sender, displayName: chatbotName, text: firstMessageContent)
+        self.conversationMessages.append(firstMessage!)
         self.reloadMessagesView()
+        let secondMessage = JSQMessage(senderId: sender, displayName: chatbotName, text: secondMessageContent)
+        self.conversationMessages.append(secondMessage!)
     }
     // Set how many items are in the collection view
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -225,4 +230,36 @@ class ViewController: JSQMessagesViewController {
             }
         } */
     }
+    //make a request to the API
+    func fetchResponse(queryText: String)
+    {
+        //Get the response from the chat bot
+        api.sendRequest(session: session, request: queryText) { (result) -> Void in
+            self.callback(result: result) //add callback
+            
+        }
+        
+    }
+    
+    func callback(result: String)
+    {
+        
+        print("Result in callback is: " + result)
+        DispatchQueue.main.async { //to let it run in the thread with priority
+            self.showTypingIndicator = 	false
+            self.addMessage(withId: "321", name: "Watson", text: result)
+            JSQSystemSoundPlayer.jsq_playMessageReceivedSound()
+            self.finishReceivingMessage(animated: true)
+        }
+        
+        
+    }
+    
+    //send messages
+    func addMessage(withId id: String, name: String, text: String) {
+        let message = JSQMessage(senderId: id, displayName: name, text: text)
+        self.conversationMessages.append(message!)
+        self.reloadMessagesView()
+    }
+
 }

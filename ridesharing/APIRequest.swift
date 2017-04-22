@@ -12,17 +12,20 @@ import SwiftyJSON
 class APIRequest
 {
     let baseUrl = ""
-    let lang = "en" //German language
+    let lang = "en"
     
     
     func sendRequest(session: Int, request: String, callback: @escaping (String) -> ())
     {
         let escapedRequest = request.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlQueryAllowed)
-        let queryUrl = baseUrl+"query="+escapedRequest!
-        let completeUrl = queryUrl+"&lang="+lang+"&sessionId="+String(session)
-        let url = URL(string: completeUrl)
+        //let queryUrl = baseUrl+"query="+escapedRequest!
+        //let completeUrl = queryUrl+"&lang="+lang+"&sessionId="+String(session)
+        let url = URL(string: baseUrl)
         print(request);
         var urlRequest = URLRequest(url: url!) //make a request out of the URL
+        urlRequest.httpMethod = "POST"
+        let postString = "user_id="+String(session)+"&input="+escapedRequest!
+        urlRequest.httpBody = postString.data(using: .utf8)
         //urlRequest.setValue("Bearer "+clientKey, forHTTPHeaderField: "Authorization")//set HTTP auth header
         let session = URLSession.shared
         //perform data request
@@ -32,24 +35,9 @@ class APIRequest
             {
                 print("Data has been returned.")
                 let json = JSON(data: returnedData)
-                //let datum = self.aktuellesDatum();
-                //allgemein.datum = datum;
-                //allgemein.identi = idHelper;
-                
-                /*if let usecaseJson = json["result"]["parameters"]["usecase"].string{
-                    //allgemein.usecase = usecaseJson;
-                }*/
-                
-                /*if(allgemein.usecase == "autounfall"){
-                    
-                    
-                    
-                }*/
-                
-                
                 if let result = json["result"]["speech"].string {
                     //Now you got your value
-                    print("The value from result.speech was retrieved and is: ")
+                    print("The response from Watson was retrieved and is: ")
                     print(result)
                     callback(result) //The result will be accessible via the variable resultResponse
                 }
