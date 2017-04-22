@@ -24,8 +24,10 @@ class APIRequest
         print(request);
         var urlRequest = URLRequest(url: url!) //make a request out of the URL
         urlRequest.httpMethod = "POST"
-        let postString = "user_id="+String(session)+"&input="+escapedRequest!
-        urlRequest.httpBody = postString.data(using: .utf8)
+        let requestDict = ["user_id": String(session), "input": escapedRequest!]
+        do {
+        let jsonData = try JSONSerialization.data(withJSONObject: requestDict, options: JSONSerialization.WritingOptions.prettyPrinted)
+        urlRequest.httpBody = jsonData
         urlRequest.addValue("application/json", forHTTPHeaderField: "Content-Type")
         //urlRequest.setValue("Bearer "+clientKey, forHTTPHeaderField: "Authorization")//set HTTP auth header
         let session = URLSession.shared
@@ -56,7 +58,11 @@ class APIRequest
             
         }
         task.resume()
+        } catch let error as NSError{
+            NSLog(error.localizedDescription)
+        }
     }
+        
         
     
 
