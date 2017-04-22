@@ -218,7 +218,7 @@ class ViewController: JSQMessagesViewController {
         self.conversationMessages.append(message!)
         DispatchQueue.main.async {
             self.showTypingIndicator = 	true
-            self.finishSendingMessage()
+            self.finishSendingMessage(animated: true)
         }
         
         // Get response from Watson based on user text
