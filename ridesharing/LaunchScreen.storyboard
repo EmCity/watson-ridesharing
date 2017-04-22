@@ -22,18 +22,19 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AppLogo-3" translatesAutoresizingMaskIntoConstraints="NO" id="e7H-MJ-qEV">
-                                <rect key="frame" x="57" y="-60" width="262.5" height="720"/>
-                                <color key="tintColor" red="1" green="0.10" blue="0.10" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="iTunesArtwork@3x_masked" translatesAutoresizingMaskIntoConstraints="NO" id="e7H-MJ-qEV">
+                                <rect key="frame" x="56" y="-468" width="263" height="1536"/>
+                                <color key="backgroundColor" red="0.82169109582901001" green="0.25914376974105835" blue="0.15904024243354797" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="tintColor" red="0.82169109582901001" green="0.25914376974105835" blue="0.15904024243354797" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Rideshare.io" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="none" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lHX-XZ-2OF">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="RideGo" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="none" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lHX-XZ-2OF">
                                 <rect key="frame" x="105.76562761424623" y="368" width="163.00000000000006" height="21.000000000000057"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="29"/>
                                 <color key="textColor" red="0.97767640608739259" green="0.98844630896687513" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" red="0.9" green="0.1" blue="0.10" alpha="0.8" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.82169109582901001" green="0.25914376974105835" blue="0.15904024243354797" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="lHX-XZ-2OF" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" constant="0.59999999999999998" id="EDS-Gy-dMl" userLabel="Rideshare.io.centerX = centerX"/>
                             <constraint firstItem="e7H-MJ-qEV" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" multiplier="0.9" id="PhF-Uv-rdA" userLabel="AppLogo-2.centerY = 0.95 × centerY"/>
@@ -50,6 +51,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="AppLogo-3" width="720" height="720"/>
+        <image name="iTunesArtwork@3x_masked" width="1536" height="1536"/>
     </resources>
 </document>
