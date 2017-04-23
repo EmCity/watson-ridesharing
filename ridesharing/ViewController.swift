@@ -170,7 +170,7 @@ class ViewController: JSQMessagesViewController {
         let message = conversationMessages[(indexPath as NSIndexPath).item]
         var avatar: JSQMessagesAvatarImage
         if (message.senderId == self.senderId){
-            avatar  = JSQMessagesAvatarImageFactory.avatarImage(with: UIImage(named:"lisa-avatar"), diameter: 37)
+            avatar  = JSQMessagesAvatarImageFactory.avatarImage(with: UIImage(named:"asianavatar"), diameter: 37)
         }
         else{
             avatar  = JSQMessagesAvatarImageFactory.avatarImage(with: UIImage(named:"watson-blue-avatar"), diameter: 32)

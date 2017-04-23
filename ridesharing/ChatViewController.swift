@@ -13,6 +13,9 @@ import JSQMessagesViewController
 
 class ChatViewController: JSQMessagesViewController {
     
+    // for true see the latino guy
+    let userSetFlag = false;
+    
     let ref = FIRDatabase.database().reference(withPath: "grocery-items")
     private lazy var channelRef: FIRDatabaseReference = FIRDatabase.database().reference().child("channels")
     private var channelRefHandle: FIRDatabaseHandle?
@@ -81,10 +84,18 @@ class ChatViewController: JSQMessagesViewController {
         let message = messages[(indexPath as NSIndexPath).item]
         var avatar: JSQMessagesAvatarImage
         if (message.senderId == self.senderId){
-            avatar  = JSQMessagesAvatarImageFactory.avatarImage(with: UIImage(named:"latinoavatar"), diameter: 37)
+            if(userSetFlag) {
+                avatar  = JSQMessagesAvatarImageFactory.avatarImage(with: UIImage(named:"latinoavatar"), diameter: 37)
+            } else {
+                avatar  = JSQMessagesAvatarImageFactory.avatarImage(with: UIImage(named:"asianavatar"), diameter: 37)
+            }
         }
         else{
-            avatar  = JSQMessagesAvatarImageFactory.avatarImage(with: UIImage(named:"asianavatar"), diameter: 32)
+            if(userSetFlag) {
+                avatar  = JSQMessagesAvatarImageFactory.avatarImage(with: UIImage(named:"asianavatar"), diameter: 37)
+            } else {
+                avatar  = JSQMessagesAvatarImageFactory.avatarImage(with: UIImage(named:"latinoavatar"), diameter: 37)
+            }
         }
         return avatar
     }

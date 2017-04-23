@@ -269,7 +269,7 @@
 			attributes = {
 				LastSwiftUpdateCheck = 0730;
 				LastUpgradeCheck = 0800;
-				ORGANIZATIONNAME = IBM;
+				ORGANIZATIONNAME = "";
 				TargetAttributes = {
 					555C91A71D0F0731003E84E3 = {
 						CreatedOnToolsVersion = 7.3.1;
@@ -641,7 +641,7 @@
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = ridesharing/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ibm.ridesharing;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -662,7 +662,7 @@
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = ridesharing/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ibm.ridesharing;
 				PRODUCT_NAME = "$(TARGET_NAME)";
